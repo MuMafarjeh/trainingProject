@@ -2,7 +2,7 @@ import React from 'react';
 
 import axios from 'axios';
 import { any } from 'prop-types';
-import getAllData from '../myTable/MyTable';
+import getAllData from '../tableComponent/Table';
 
 export default class ListOfData extends React.Component {
   constructor(props: any) {
@@ -39,7 +39,7 @@ export default class ListOfData extends React.Component {
         {(this.state.persons as Array<any>).map((person: any) => <div>{person.email}</div>)}
 
         }
- 
+
       </div>
 
     )

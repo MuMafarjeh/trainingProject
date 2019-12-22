@@ -6,8 +6,8 @@ import MenuItem from '@material-ui/core/MenuItem';
 import InputLabel from '@material-ui/core/InputLabel';
 import Chart from 'react-chartjs-2';
 import { makeStyles, createStyles, Theme } from '@material-ui/core';
-import MyChart from './MyChart';
-
+import MyChart from './MainChart';
+import useStyle from './MainChart/style'
 class Charts extends Component {
 
     constructor(props) {
@@ -24,31 +24,35 @@ class Charts extends Component {
                         }
                     }]
                 }
-            }
+            },
+
+
+
 
         }
     }
     handleClick = event => {
         this.setState({ type: event.target.value });
+
     };
+
 
 
 
     render() {
         const { type } = this.state
-
-
+        const { classes } = this.props;
         console.log(this.state.type)
 
         return (
-            <div className="charts">
-                <div className="seleted">
-                    <FormControl variant="filled" >
+
+            <div>
+                <div className={classes.root}>
+                    <FormControl variant="filled"  >
                         <InputLabel htmlFor="filled-age-simple"></InputLabel>
                         <Select
                             value={this.state.type}
                             onChange={event => this.handleClick(event)}
-
                         >
                             <MenuItem value={'bar'}>Bar Chart</MenuItem>
                             <MenuItem value={'line'}>Line Chart</MenuItem>
@@ -60,7 +64,8 @@ class Charts extends Component {
 
                 </div>
 
-                <MyChart type={type} />
+                <MyChart
+                type={type} />
 
 
             </div>
@@ -68,4 +73,5 @@ class Charts extends Component {
     }
 }
 
-export { Charts as default }
+
+export default (useStyle)(Charts)   
