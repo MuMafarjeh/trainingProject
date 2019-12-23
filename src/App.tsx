@@ -49,8 +49,7 @@ const App = () => {
           </BrowserRouter>
           {/* <Footer/> */}
         </ThemeProvider>
-
-      </Provider>
+      </Provider> 
     </div>
 
   );

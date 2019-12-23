@@ -27,33 +27,35 @@ export default function SearchBar(props: IProps) {
   };
 
   const handleInputBlur = () => {
-    setopenSearchBarIcon(false);
+    setopenSearchBarIcon(!openSearchBarIcon);
   };
 
   const [inputValue, setInputValue] = useState("");
   return (
-    <>
-      <div className={classes.rootOfSearchBar}>
 
-        <Paper >
+    <div className={classes.rootOfSearchBar}>
+      
+      <Paper className={classes.prepar}>
+      <div className={classes.rootOfSearchIcon}>
           <SearchIcon
+            // onClick={handleInputFocus}
             onMouseEnter={handleInputFocus}
-          // onMouseLeave={handleInputFocus}
-          />
+          //  onMouseLeave={handleInputBlur}
+          //  onFocus={handleInputFocus}
+          //  onBlur={handleInputBlur}
 
+          />  </div><div className={classes.inputOfSearchBar}>
           {openSearchBarIcon && <InputBase
-            className={classes.inputOfSearchBar}
             value={myValue}
             onChange={goDoFilter}
-            //  onFocus={handleInputFocus}
-            // onBlur={handleInputBlur}
             placeholder="Search "
             inputProps={{ 'aria-label': 'search ' }}
           />}
+    </div>
+      </Paper>
+     
+    </div>
 
-        </Paper>
-      </div>
-    </>
   );
 }
 
