@@ -48,26 +48,28 @@ export { useStyles }
 export const useStylesSearchBar = makeStyles((theme: Theme) =>
   createStyles({
     rootOfSearchBar: {
-      marginTop: '15px',
-      padding: '2px 4px',
-      display: 'flex',
-      alignItems: 'center',
-      width: 400,
-      marginBottom: '5px',
-      marginLeft: theme.spacing(2),
+      
+      padding: '9px 20px',
+       display: 'flex',
+       flex: 1,
+       flexDirection: 'row',
+       alignItems: 'center',
+       width: 400,
+    },
+    prepar:{
+       alignItems: 'center',
+      justifyItems:'center',
+      display:'flex',
+      padding: '2px 2px',
     },
     inputOfSearchBar: {
-      marginLeft: theme.spacing(1),
-      flex: 1,
+       flex: 1,
+      padding:'0px 0px',
     },
     rootOfSearchIcon: {
-      marginTop: '5px',
-      padding: '2px 4px',
-      display: 'flex',
-      alignItems: 'center',
-      width: 400,
-      marginBottom: '5px',
-      marginLeft: theme.spacing(2),
+      padding: '4px 4px',
+       alignItems: 'center',
+       display:'flex',
     },
   }));
 
