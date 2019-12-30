@@ -5,29 +5,29 @@ import useStyles from "./style";
 import { ThemeProvider } from "@material-ui/styles";
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
+import axios from "axios";
 
 
 
 const ranges = [
   {
-    value: '0-20',
-    label: '0 to 20',
+    value: 'male',
+    label: 'Male',
   },
   {
-    value: '21-50',
-    label: '21 to 50',
-  },
-  {
-    value: '51-100',
-    label: '51 to 100',
+    value: 'female',
+    label: 'Female',
   },
 ];
 
 interface State {
-  amount: string;
+  email: string;
+  first_name: string;
+  last_name: string;
+  Gender: string;
+  location: string;
   password: string;
-  weight: string;
-  weightRange: string;
+
   showPassword: boolean;
 }
 
@@ -35,10 +35,12 @@ export default function InputAdornments() {
 
   const classes = useStyles();
   const [values, setValues] = React.useState<State>({
-    amount: '',
+    email: '',
+    first_name: '',
+    last_name: '',
+    Gender: '',
+    location: '',
     password: '',
-    weight: '',
-    weightRange: '',
     showPassword: false,
   });
 
@@ -56,60 +58,73 @@ export default function InputAdornments() {
 
   const handleSubmiting = (e: any) => {
     e.preventDefault();
+    axios.post(`https://reqres.in/api/users`, { values }).then(response => {
+      console.log(response);
+
+    }).catch(error => {
+      console.log(error);
+
+    });
     console.log(values);
   }
 
   return (
     <React.Fragment>
       <form onSubmit={handleSubmiting} className={classes.root} >
+
         <TextField
-          label="With normal TextField"
+          label="Pleas Enter First Name"
           id="simple-start-adornment"
-          className={clsx(classes.textField, classes.kgField)}
+          className={clsx(classes.margin, classes.kgField)}
+          value={values.first_name}
+          onChange={handleChange('first_name')}
           InputProps={{
-            startAdornment: <InputAdornment position="start">Kg</InputAdornment>,
+            startAdornment: <InputAdornment position="start">FirstName:</InputAdornment>,
           }}
         />
         <TextField
-          select
-          label="With Select"
-          className={clsx(classes.margin, classes.textField)}
-          value={values.weightRange}
-          onChange={handleChange('weightRange')}
+          label="Please Enter Last Name"
+          id="simple-start-adornment2"
+          className={clsx(classes.margin, classes.kgField)}
+          value={values.last_name}
+          onChange={handleChange('last_name')}
           InputProps={{
-            startAdornment: <InputAdornment position="start">Kg</InputAdornment>,
+            startAdornment: <InputAdornment position="start">LastName:</InputAdornment>,
+          }}
+        />
+
+
+        <TextField
+          select
+          label="Please Choose Gender"
+          className={clsx(classes.margin, classes.kgField)}
+          value={values.Gender}
+          onChange={handleChange('Gender')}
+          InputProps={{
+            startAdornment: <InputAdornment position="start">Gender</InputAdornment>,
           }}
         >
+
           {ranges.map(option => (
             <MenuItem key={option.value} value={option.value}>
               {option.label}
             </MenuItem>
           ))}
         </TextField>
-        <FormControl fullWidth className={(classes.margin)}>
-          <InputLabel htmlFor="adornment-amount">Amount</InputLabel>
+
+
+        <FormControl className={clsx(classes.kgField, classes.margin)}>
+          <InputLabel htmlFor="adornment-amount">LocationDescription</InputLabel>
           <Input
             className={(classes.amountField)}
             id="adornment-amount"
-            value={values.amount}
-            onChange={handleChange('amount')}
-            startAdornment={<InputAdornment position="start">$</InputAdornment>}
+            value={values.location}
+            onChange={handleChange('location')}
+          // startAdornment={<InputAdornment position="start">Location:</InputAdornment>}
           />
         </FormControl>
-        <FormControl className={clsx(classes.margin, classes.withoutLabel, classes.textField)}>
-          <Input
-            inputProps={{
-              'aria-label': 'weight',
-            }}
-            id="adornment-weight"
-            value={values.weight}
-            onChange={handleChange('weight')}
-            endAdornment={<InputAdornment position="end">Kg</InputAdornment>}
-            aria-describedby="weight-helper-text"
 
-          />
-        </FormControl>
-        <FormControl className={clsx(classes.margin, classes.textField)}>
+        <FormControl className={clsx(classes.margin, classes.kgField)}>
           <InputLabel htmlFor="adornment-password">Password</InputLabel>
           <Input
             id="adornment-password"
@@ -129,7 +144,7 @@ export default function InputAdornments() {
             }
           />
         </FormControl>
-        <Button type="submit" className={classes.btn} >Submiting</Button>
+        <Button type="submit" className={clsx(classes.margin, classes.btn)} >Submiting</Button>
 
       </form>
     </React.Fragment>
