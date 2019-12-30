@@ -1,8 +1,5 @@
 import React from 'react';
-
 import axios from 'axios';
-import { any } from 'prop-types';
-import getAllData from '../tableComponent/Table';
 
 export default class ListOfData extends React.Component {
   constructor(props: any) {
