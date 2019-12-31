@@ -18,14 +18,10 @@ function* removeRow(action: any) {
         const data = yield select(state => {
             return state.data.data
         })
-
         console.log(data, "saga");
-        //   const dad = data.then((result:any)=>result);
-        //        console.log(dad,'dad');
-        // console.log(data.then((result:any)=>result), "saga");
         const arrayCopy = data.filter((row: any) => row.id !== rowId);
-        // const result = data.slice(0);
-        // result.splice(row, 1);
+        // const result = [...data];
+        // result.splice(rowId, 1);
         yield put(deleteAction(arrayCopy));
     } catch (e) {
         console.log(e);
@@ -38,9 +34,13 @@ function* editData(action: any) {
         const data = yield select(state => {
             return state.data.data
         })
+        
         let newArr = [...data] as any;
-        newArr[action.payload.i] = action.payload.editData;
+        newArr[action.payload.editData.id-1] = action.payload.editData;
+        console.log(action.payload.i,'action.payload.i');
+        
         yield put(editDataAction(newArr));
+
     } catch (e) {
         console.log(e);
 
