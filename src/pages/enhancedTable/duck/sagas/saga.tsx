@@ -1,5 +1,5 @@
-import { getData, receiveData, deleteRow, editDataAction, editRow, getingApiData, sortDataAction, filterDataAction, deleteAction } from "../duck/action/allAction";
-import { typeOfAction } from '../duck/action/actionType'
+import { getData, receiveData, deleteRow, editDataAction, editRow, getingApiData, sortDataAction, filterDataAction, deleteAction } from "../action/allAction";
+import { typeOfAction } from '../action/actionType'
 import { call, select, put, takeLatest, takeEvery, all, fork, take, join, delay } from "@redux-saga/core/effects";
 
 
@@ -41,13 +41,6 @@ function* editData(action: any) {
         let newArr = [...data] as any;
         newArr[action.payload.i] = action.payload.editData;
         yield put(editDataAction(newArr));
-        // console.log(action.payload.i, 'id');
-        // console.log(newArr, 'newArr');
-
-
-
-
-
     } catch (e) {
         console.log(e);
 

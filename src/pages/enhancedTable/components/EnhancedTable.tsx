@@ -6,7 +6,7 @@ import BodyTableContainer from './TableBodyContainer';
 import SearchBarContainer from './SearchBarContainer';
 import { filterData } from './utils'
 import { createContext } from 'react';
-import {useStyles} from './style';
+import { useStyles } from './style';
 import TableHeaderContainer from './TableHeaderContainer';
 import { withStyles } from '@material-ui/styles';
 
@@ -22,7 +22,7 @@ class simpleTable extends Component<any, any>{
       sortDirection: "ASC",
       columnSorted: "",
       sortedData: [],
-      classes:useStyles,
+      classes: useStyles,
       columns: [
         {
           Header: "User Id",
@@ -42,33 +42,25 @@ class simpleTable extends Component<any, any>{
         {
           Header: "Last Name",
           accessor: "last_name"
-        }
+        },
       ]
     };
     // this.doFilter.bind(this)
   }
 
   componentDidMount() {
-
-    this.setState({ searchedData: this.state.data })
+    this.setState({ data: this.props.allData })
   }
   componentDidUpdate(prevProps: any) {
-
-
     if (JSON.stringify(prevProps.allData) != JSON.stringify(this.props.allData)) {
       this.setState({ data: this.props.allData })
       this.setState({ sortedData: this.props.allData })
-
-      // this.props.allData.then((result:any)=>this.setState({data:result}))
-      // console.log(this.props.allData.then((result:any)=>result), "bayyyyyy");
-
-
-
+      console.log(this.props.allData, 'allData');
     }
   }
 
   handleSort = (sortedColumn: any) => {
-    const result = this.state.sortedData.slice(0);
+    const result = this.props.allData.slice(0);
     console.log(result, 'fromApi');
     // debugger
     const columnToSort = sortedColumn;

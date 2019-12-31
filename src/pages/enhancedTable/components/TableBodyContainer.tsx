@@ -21,11 +21,11 @@ export default function TableBodyContainer(props: ITableBodyContainer) {
 
     return (<BodyTableClass
 
-        allData={props.allData}
+        allData={allData}
         dataFromStore={data}
         onDeleteDispatch={(row: any) => dispatch(deleteRow(row))}
         onEditDispatch={(editData: any, id: any) => dispatch(editRow(editData, id))}
-   
+
 
     />
     )
