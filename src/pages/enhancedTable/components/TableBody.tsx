@@ -33,7 +33,9 @@ class TableBodyClass extends Component<IProps, any> {
 
   }
 
-
+  // componentDidMount() {
+  //   this.setState({ data: this.props.allData })
+  // }
   componentDidUpdate(nextProps: any) {
     if (JSON.stringify(nextProps.allData) !== JSON.stringify(this.props.allData)) {
       this.setState({ data: this.props.allData });

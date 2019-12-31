@@ -9,8 +9,8 @@ import { Grid, Button, Switch, InputBase, IconButton, Menu, MenuItem, Badge } fr
 import MenuIcon from '@material-ui/icons/Menu';
 import { borderRight } from '@material-ui/system';
 import { withRouter, RouteComponentProps } from "react-router-dom";
-import Chart from '../pages/chartComponent/Chart';
-import TheTable from '../tableComponent/Table';
+import Chart from '../../pages/chart/components/Chart';
+import TheTable from '../../tableComponent/Table';
 import useStyles from './style';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';

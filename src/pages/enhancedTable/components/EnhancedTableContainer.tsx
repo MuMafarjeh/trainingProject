@@ -12,16 +12,13 @@ class TableBodyContainer extends Component<any, any>{
     constructor(props: any) {
         super(props);
         this.state = {
-            dataFetched:[],
+            dataFetched: [],
         }
 
     }
 
     componentDidMount() {
-
         this.props.dispatchRequestData();
-        // this.setState({ dataFetched: this.props.data })
-        // console.log(this.state.dataFetched, 'dataFetched');
     }
 
     render() {
@@ -39,7 +36,7 @@ class TableBodyContainer extends Component<any, any>{
         )
     }
 }
-function mapStateToProps(state: any){
+function mapStateToProps(state: any) {
 
 
     return {
